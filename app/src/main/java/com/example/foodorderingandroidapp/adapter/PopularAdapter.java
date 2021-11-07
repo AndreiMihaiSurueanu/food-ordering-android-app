@@ -1,12 +1,16 @@
 package com.example.foodorderingandroidapp.adapter;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foodorderingandroidapp.R;
 import com.example.foodorderingandroidapp.model.Popular;
 
 import java.util.List;
@@ -24,7 +28,10 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
     @NonNull
     @Override
     public PopularViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+
+        View view = LayoutInflater.from(context).inflate(R.layout.popular_recycler_items, parent, false);
+
+        return new PopularViewHolder(view);
     }
 
     @Override
@@ -39,8 +46,15 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
 
     public  static class PopularViewHolder extends RecyclerView.ViewHolder{
 
+        ImageView popularImage;
+        TextView popularName;
+
         public PopularViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            popularName = itemView.findViewById(R.id.popular_name);
+            popularImage = itemView.findViewById(R.id.popular_image);
+
         }
     }
 }
