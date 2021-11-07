@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.foodorderingandroidapp.adapter.AllMenuAdapter;
 import com.example.foodorderingandroidapp.adapter.PopularAdapter;
 import com.example.foodorderingandroidapp.adapter.RecommendedAdapter;
+import com.example.foodorderingandroidapp.model.Allmenu;
 import com.example.foodorderingandroidapp.model.FoodData;
 import com.example.foodorderingandroidapp.model.Popular;
 import com.example.foodorderingandroidapp.model.Recommended;
@@ -25,10 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
     ApiInterface apiInterface;
 
-    RecyclerView popularRecyclerView, recommendedRecyclerView;
+    RecyclerView popularRecyclerView, recommendedRecyclerView, allMenuRecyclerView;
 
     PopularAdapter popularAdapter;
     RecommendedAdapter recommendedAdapter;
+    AllMenuAdapter allMenuAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
                 getPopularData(foodDataList.get(0).getPopular());
 
                 getRecommendedData(foodDataList.get(0).getRecommended());
+
+                getAllMenu(foodDataList.get(0).getAllmenu());
             }
 
             @Override
@@ -74,6 +79,17 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recommendedRecyclerView.setLayoutManager(layoutManager);
         recommendedRecyclerView.setAdapter(recommendedAdapter);
+
+    }
+
+    private void  getAllMenu(List<Allmenu> allmenuList){
+
+        allMenuRecyclerView = findViewById(R.id.all_menu_recycler);
+        allMenuAdapter = new AllMenuAdapter(this, allmenuList);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        allMenuRecyclerView.setLayoutManager(layoutManager);
+        allMenuRecyclerView.setAdapter(allMenuAdapter);
+        allMenuAdapter.notifyDataSetChanged();
 
     }
 }
