@@ -6,6 +6,10 @@
 # Files for the ART/Dalvik VM
 *.dex
 
+# Project resources
+FoodApp-master
+FoodApp-master.zip
+
 # Java class files
 *.class
 
