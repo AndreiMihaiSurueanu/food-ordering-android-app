@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.foodorderingandroidapp.adapter.PopularAdapter;
+import com.example.foodorderingandroidapp.adapter.RecommendedAdapter;
 import com.example.foodorderingandroidapp.model.FoodData;
 import com.example.foodorderingandroidapp.model.Popular;
+import com.example.foodorderingandroidapp.model.Recommended;
 import com.example.foodorderingandroidapp.retrofit.ApiInterface;
 import com.example.foodorderingandroidapp.retrofit.RetrofitClient;
 
@@ -23,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
     ApiInterface apiInterface;
 
-    RecyclerView popularRecyclerView;
+    RecyclerView popularRecyclerView, recommendedRecyclerView;
 
     PopularAdapter popularAdapter;
+    RecommendedAdapter recommendedAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                 getPopularData(foodDataList.get(0).getPopular());
+
+                getRecommendedData(foodDataList.get(0).getRecommended());
             }
 
             @Override
@@ -59,6 +64,16 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         popularRecyclerView.setLayoutManager(layoutManager);
         popularRecyclerView.setAdapter(popularAdapter);
+
+    }
+
+    private void  getRecommendedData(List<Recommended> recommendedList){
+
+        recommendedRecyclerView = findViewById(R.id.recommended_recycler);
+        recommendedAdapter = new RecommendedAdapter(this, recommendedList);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recommendedRecyclerView.setLayoutManager(layoutManager);
+        recommendedRecyclerView.setAdapter(recommendedAdapter);
 
     }
 }

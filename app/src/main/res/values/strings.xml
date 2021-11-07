@@ -5,4 +5,10 @@
     <string name="search">Search...</string>
     <string name="popular_this_week">Popular this Week</string>
     <string name="nasi_padang">Nasi Padang</string>
+    <string name="recommened_for_you">Recommened for You</string>
+    <string name="rendang">Rendang</string>
+    <string name="_4_5">4.5</string>
+    <string name="_160">160</string>
+    <string name="_45_mins">45 mins</string>
+    <string name="free_delivery">Free Delivery</string>
 </resources>
