@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FoodOrderingAndroidApp</string>
+    <string name="indonesian_food">Indonesian Food</string>
+    <string name="todo">TODO</string>
+    <string name="search">Search...</string>
+    <string name="popular_this_week">Popular this Week</string>
 </resources>
