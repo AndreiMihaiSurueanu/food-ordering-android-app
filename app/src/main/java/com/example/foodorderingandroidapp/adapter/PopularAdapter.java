@@ -1,6 +1,7 @@
 package com.example.foodorderingandroidapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.foodorderingandroidapp.FoodDetails;
 import com.example.foodorderingandroidapp.R;
 import com.example.foodorderingandroidapp.model.Popular;
 
@@ -42,6 +44,18 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
 
         Glide.with(context).load(popularList.get(position).getImageUrl()).into(holder.popularImage);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, FoodDetails.class);
+                i.putExtra("name", popularList.get(position).getName());
+                i.putExtra("price", popularList.get(position).getPrice());
+                i.putExtra("rating", popularList.get(position).getRating());
+                i.putExtra("image", popularList.get(position).getImageUrl());
+
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override
