@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.foodorderingandroidapp.R;
 import com.example.foodorderingandroidapp.model.Popular;
 
@@ -36,6 +37,10 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
 
     @Override
     public void onBindViewHolder(@NonNull PopularViewHolder holder, final int position) {
+
+        holder.popularName.setText(popularList.get(position).getName());
+
+        Glide.with(context).load(popularList.get(position).getImageUrl()).into(holder.popularImage);
 
     }
 
